@@ -32,7 +32,7 @@ const LoginTabs = () => {
               <LoginForm />
               <CardFooter className="mt-8 p-0 flex justify-center">
                 <p className="dark:text-gray-400 text-sm">
-                  Don't have an account?
+                  Don&apos;t have an account?
                   <span>
                     <Link
                       href={"/signup"}
