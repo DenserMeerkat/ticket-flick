@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main>
       <AppBar showSearch={true} actions="login" />
-      <div className="h-fit w-full">
+      <div className="min-h-screen h-fit w-full">
         <HeroCarousel />
         <Section title={"Recommended"} />
         <Section title={"Action"} />
