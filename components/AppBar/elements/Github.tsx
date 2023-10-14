@@ -1,4 +1,4 @@
-import TooltipElement from "@/components/common/TooltipElement";
+import TooltipElement from "@/components/utils/TooltipElement";
 import { Button } from "@/components/ui/button";
 import { githubRepo } from "@/lib/constants";
 import { Github } from "lucide-react";

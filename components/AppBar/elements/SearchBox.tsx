@@ -6,8 +6,8 @@ const SearchBox = (props: any) => {
   const onclick = props.onClick;
   return (
     <Button
-      variant="ghost"
-      className=" md:w-64 xl:w-72 px-2 h-10 rounded-md cursor-pointer sm:border  flex items-center justify-between"
+      variant="outline"
+      className=" md:w-64 xl:w-72 px-2 h-10 rounded-md flex items-center justify-between"
       onClick={open ? onclick : () => {}}
     >
       <div className="flex items-center gap-0.5">

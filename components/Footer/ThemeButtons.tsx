@@ -8,7 +8,6 @@ const ThemeButtons = () => {
   const { systemTheme, theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
-  console.log(systemTheme, theme);
 
   const ToggleButton = (props: any) => {
     const themeName = props.themeName;

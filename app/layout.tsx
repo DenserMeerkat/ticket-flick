@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import RootComponet from "../components/Wrapper";
+import RootComponet from "../components/utils/Wrapper";
 import { Inter } from "next/font/google";
 import { appName } from "@/lib/constants";
 import { Toaster } from "@/components/ui/toaster";

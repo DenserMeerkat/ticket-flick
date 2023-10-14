@@ -1,6 +1,7 @@
 "use client";
 import { ThemeProvider } from "next-themes";
 import "react-multi-carousel/lib/styles.css";
+import { AppStateProvider } from "@/components/utils/AppStateContext";
 import Footer from "@/components/Footer/Footer";
 
 export default function RootComponet({
@@ -10,8 +11,10 @@ export default function RootComponet({
 }) {
   return (
     <ThemeProvider enableSystem defaultTheme="dark" attribute="class">
-      {children}
-      <Footer />
+      <AppStateProvider>
+        {children}
+        <Footer />
+      </AppStateProvider>
     </ThemeProvider>
   );
 }
