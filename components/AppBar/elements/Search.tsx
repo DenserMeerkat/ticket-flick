@@ -9,6 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { SearchIcon } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
 import { Movie } from "@/types/movie";
@@ -69,12 +70,14 @@ const Search = () => {
               onClick={() => setSearchOpen((prev) => !prev)}
             />
           </DialogTrigger>
-          <DialogContent className="w-full max-w-3xl max-h-screen">
+          <DialogContent className="w-full max-w-xl max-h-screen p-1">
             <DialogHeader>
               <DialogTitle>
-                <div className="mt-6 md:mt-0 flex w-full max-w-2xl items-center gap-1">
+                <div className="mt-6 md:mt-0 flex w-full items-center gap-1">
+                  <SearchIcon className="h-5 w-5 ml-3" />
                   <Input
-                    type="email"
+                    className="mr-8 border-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:ring-offset-transparent focus-visible:ring-transparent"
+                    type="text"
                     placeholder="Type movie title"
                     onChange={handleInputChange}
                   />

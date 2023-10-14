@@ -1,3 +1,4 @@
+"use client";
 import LoginForm from "@/components/Login/LoginForm";
 import {
   Card,
@@ -10,11 +11,22 @@ import {
 import { buttonVariants } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const LoginTabs = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const selectedTab = searchParams.get("tab") || "user";
+
   return (
     <div className="max-w-md mx-auto h-max">
-      <Tabs defaultValue="user" className="max-w-sm">
+      <Tabs
+        value={selectedTab}
+        className="max-w-sm"
+        onValueChange={(value) => {
+          router.push(`?tab=${value}`);
+        }}
+      >
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="user">User</TabsTrigger>
           <TabsTrigger value="admin">Admin</TabsTrigger>

@@ -14,8 +14,6 @@ const Tray = (props: any) => {
       }
     >
       {showSearch && <Search />}
-      <GitHubLink />
-      <ThemeSwitcher />
       <Actions actions={actions} />
     </div>
   );
