@@ -50,10 +50,10 @@ export default function MoviePage(props: any) {
             ></Image>
           </AspectRatio>
         </div>
-        <div className="sticky ml-1 sm:ml-4 md:ml-8 top-6 md:top-8 lg:flex md:items-center xl:items-end px-2 sm:px-4 md:px-8 py-6 sm:py-8 md:py-12">
+        <div className="max-w-7xl xl:mx-auto lg:flex md:items-center xl:items-end px-2 sm:px-4 md:px-8 py-6 sm:py-8 md:py-12">
           <div className="min-w-[80px] sm:min-w-[120px] w-[20%] max-w-[240px] xl:max-w-[280px] aspect-[2/3]">
             <AspectRatio
-              className="md:rounded-lg overflow-clip border shadow-lg"
+              className="rounded-sm md:rounded-lg overflow-clip border shadow-lg"
               ratio={2 / 3}
             >
               <Image

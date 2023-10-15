@@ -26,7 +26,7 @@ const CarouselItem = (props: any) => {
             alt="Movie Banner"
             layout="fill"
           ></Image>
-          <div className="hidden md:block absolute inset-0 z-[1] bg-gradient-to-t from-zinc-950 to-transparent" />
+          <div className="absolute inset-0 z-[1] bg-gradient-to-t from-zinc-950 to-transparent opacity-90 md:opacity-100" />
           <p className="absolute left-2 bottom-2 z-10 hidden md:block text-xs lg:text-base tracking-wider font-semibold select-none text-white">
             {movie.name}
           </p>
