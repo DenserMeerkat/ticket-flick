@@ -3,9 +3,12 @@ import React from "react";
 import CarouselItem from "./CarouselItem";
 
 import Carousel from "react-multi-carousel";
+import { getMovieByGenre } from "@/lib/movieUtils";
+import { Movie } from "@/types/movieType";
 
-export const MultiCarousel = () => {
-  const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+export const MultiCarousel = (props: any) => {
+  const genre = props.genre;
+  const list = getMovieByGenre(genre).slice(0, 10);
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -40,8 +43,8 @@ export const MultiCarousel = () => {
       infinite={false}
       partialVisible={true}
     >
-      {list.map((item: number, index: number) => (
-        <CarouselItem key={index} title={item} />
+      {list.map((movie: Movie, index: number) => (
+        <CarouselItem key={index} title={movie.name} id={movie.id} />
       ))}
     </Carousel>
   );

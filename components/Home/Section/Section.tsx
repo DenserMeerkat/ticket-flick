@@ -4,6 +4,7 @@ import { MultiCarousel } from "./Carousel";
 import { Button } from "@/components/ui/button";
 
 const Section = (props: any) => {
+  const genre = props.genre;
   const [domLoaded, setDomLoaded] = useState(false);
   useEffect(() => {
     setDomLoaded(true);
@@ -19,7 +20,7 @@ const Section = (props: any) => {
             <p className="text-xs md:text-sm">More</p>
           </Button>
         </div>
-        <MultiCarousel />
+        <MultiCarousel genre={genre} />
       </div>
     );
   }

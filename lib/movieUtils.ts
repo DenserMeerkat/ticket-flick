@@ -1,3 +1,6 @@
+import { Movie } from "@/types/movieType";
+import { movies } from "./movies";
+
 export function calcRunTime(minutes: number): string {
   if (minutes < 0) {
     return "Invalid input";
@@ -13,4 +16,16 @@ export function calcRunTime(minutes: number): string {
   } else {
     return `${hours} h ${remainingMinutes} min`;
   }
+}
+
+export function getMovieById(id: number): Movie | undefined {
+  return movies.find((movie) => movie.id === id.toString());
+}
+
+export function getMovieByGenre(genre: string): Movie[] {
+  const array = movies.filter((movie) => movie.genre.includes(genre));
+  return array
+    .map((a) => ({ sort: Math.random(), value: a }))
+    .sort((a, b) => a.sort - b.sort)
+    .map((a) => a.value);
 }

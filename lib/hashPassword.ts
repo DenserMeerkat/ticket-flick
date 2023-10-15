@@ -11,4 +11,6 @@ const comparePassword = async (password: string, hashedPassword: string) => {
   return !isNotMatch;
 };
 
-export default { hashPassword, comparePassword };
+const hashPotato = { hashPassword, comparePassword };
+
+export default hashPotato;

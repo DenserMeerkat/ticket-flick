@@ -4,6 +4,10 @@ import Carousel from "react-multi-carousel";
 import { DotProps } from "react-multi-carousel/lib/types";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { useMediaQuery } from "react-responsive";
+import { movies } from "@/lib/movies";
+import { Movie } from "@/types/movieType";
+import Image from "next/legacy/image";
+import Link from "next/link";
 
 const HeroCarousel = () => {
   const [domLoaded, setDomLoaded] = useState(false);
@@ -12,7 +16,7 @@ const HeroCarousel = () => {
   }, []);
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const carouselRef = useRef<Carousel>(null);
-  const list = [0, 1, 2, 3, 4];
+  const list = movies.slice(0, 5);
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -84,15 +88,33 @@ const HeroCarousel = () => {
             removeArrowOnDeviceType={["tablet", "mobile"]}
             renderButtonGroupOutside={true}
           >
-            {list.map((item: number, index: number) => (
-              <div
-                key={index}
-                className=" aspect-video flex items-center justify-center
-               border bg-zinc-100 dark:bg-zinc-800 overflow-clip"
-              >
-                <p className="text-8xl opacity-5 select-none">{item}</p>
-              </div>
-            ))}
+            {list.map((movie: Movie, index: number) => {
+              const banner = "/images/banner/" + movie.id + "_banner.jpg";
+              return (
+                <Link
+                  href={`/movie/${movie.id}`}
+                  key={movie.id}
+                  className=" aspect-video flex items-center justify-center
+               border bg-zinc-100 dark:bg-zinc-800 overflow-clip relative"
+                >
+                  <Image
+                    className="z-0"
+                    key={`${movie.id}+banner`}
+                    src={banner}
+                    blurDataURL={banner.replace("images", "min_images")}
+                    placeholder="blur"
+                    alt="Movie Banner"
+                    layout="fill"
+                  ></Image>
+                  <div className="absolute inset-0 z-[1] bg-gradient-to-t from-zinc-950 to-transparent" />
+                  <div className="absolute z-[2] bottom-8 md:left-4 md:bottom-10 lg:left-8 lg:bottom-14 flex">
+                    <p className="text-xs md:text-base lg:text-xl xl:text-3xl font-semibold tracking-widest select-none text-white">
+                      {movie.name}
+                    </p>
+                  </div>
+                </Link>
+              );
+            })}
           </Carousel>
         </div>
       </div>
@@ -103,27 +125,41 @@ export default HeroCarousel;
 
 const CarouselThumbs = (props: any) => {
   const { className, slides, activeSlide, onClick } = props;
-  const commonTail = `w-48 mr-2 md:w-full border md:mb-3 rounded-sm transition-colors`;
+  const commonTail = `w-48 mr-2 md:w-full border md:mb-3 rounded-sm transition-colors overflow-clip`;
   const activeTail = `${commonTail} bg-slate-200 dark:bg-slate-400/[0.3]`;
   const inactiveTail = `${commonTail} bg-slate-100 dark:bg-slate-500/[0.3]`;
   return (
     <div
       className={`${className} hidden md:flex md:flex-col md:h-full items-center`}
     >
-      {slides.map((slide: any, index: number) => (
-        <div
-          key={index}
-          className={activeSlide === index ? activeTail : inactiveTail}
-          onClick={() => onClick(index)}
-        >
-          <AspectRatio
-            ratio={16 / 9}
-            className="flex items-center justify-center"
+      {slides.map((movie: any, index: number) => {
+        const banner = "/images/banner/" + movie.id + "_banner.jpg";
+        return (
+          <div
+            key={index}
+            className={activeSlide === index ? activeTail : inactiveTail}
+            onClick={() => onClick(index)}
           >
-            <p className="opacity-20 select-none">{slide}</p>
-          </AspectRatio>
-        </div>
-      ))}
+            <AspectRatio
+              ratio={16 / 9}
+              className="flex items-center justify-center relative"
+            >
+              <Image
+                className="z-0"
+                key={`${movie.id}+banner`}
+                src={banner}
+                blurDataURL={banner.replace("images", "min_images")}
+                placeholder="blur"
+                alt="Movie Banner"
+                layout="fill"
+              ></Image>
+              {!(activeSlide === index) && (
+                <div className="absolute inset-0 z-[1] bg-gradient-to-t from-zinc-950 to-zinc-950 opacity-50" />
+              )}
+            </AspectRatio>
+          </div>
+        );
+      })}
     </div>
   );
 };

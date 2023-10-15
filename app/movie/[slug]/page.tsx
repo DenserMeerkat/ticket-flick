@@ -2,15 +2,22 @@ import AppBar from "@/components/AppBar/AppBar";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/legacy/image";
 import { movies } from "@/lib/movies";
-import { calcRunTime } from "@/lib/movieUtils";
+import { calcRunTime, getMovieById } from "@/lib/movieUtils";
 import React from "react";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
+import NotFoundPage from "./404";
+
+export const generateStaticParams = async () => {
+  return movies.map((movie) => ({
+    slug: movie.id,
+  }));
+};
 
 export default function MoviePage(props: any) {
-  const poster = "/images/atsv_poster.jpg";
-  const banner = "/images/atsv_banner.jpg";
-  const movie = movies[1];
+  const id = props.params.slug;
+  const movie = getMovieById(id);
+  if (movie === undefined) return <NotFoundPage />;
   const title = movie.name;
   const desc = movie.description.join(" ");
   const runTime = calcRunTime(parseInt(movie.runTime));
@@ -20,6 +27,8 @@ export default function MoviePage(props: any) {
   const genres = movie.genre;
   const stars = movie.stars;
   const directors = movie.director;
+  const poster = `/images/poster/${id}_poster.jpg`;
+  const banner = `/images/banner/${id}_banner.jpg`;
   return (
     <main>
       <AppBar showSearch={true} actions="login" />
@@ -35,6 +44,8 @@ export default function MoviePage(props: any) {
               key={`${movie.id}+banner`}
               src={banner}
               alt="Movie Banner"
+              blurDataURL={banner.replace("images", "min_images")}
+              placeholder="blur"
               layout="fill"
             ></Image>
           </AspectRatio>
@@ -48,6 +59,8 @@ export default function MoviePage(props: any) {
               <Image
                 key={`${movie.id}+poster`}
                 src={poster}
+                blurDataURL={poster.replace("images", "min_images")}
+                placeholder="blur"
                 alt="Movie Poster"
                 layout="fill"
               ></Image>
@@ -58,12 +71,14 @@ export default function MoviePage(props: any) {
               {title}
             </h1>
             <div className="my-2 md:my-4 lg:my-6 flex items-center dark:font-semibold text-xs md:text-base text-zinc-500 dark:text-zinc-500">
-              <p className="ml-0.5 md:ml-1">{`IMDb ${rating}`}</p>
+              <div className="ml-0.5 md:ml-1 w-fit min-w-[28px] p-1 py-0.5 md:p-1 border md:border-2 rounded-sm  bg-background flex justify-center">
+                <p className="tracking-wider text-[0.5rem] md:text-xs dark:font-semibold text-zinc-500 dark:text-zinc-500 ">
+                  {certificate}
+                </p>
+              </div>
+              <p className="  ml-6">{`IMDb ${rating}`}</p>
               <p className="ml-4">{runTime}</p>
               <p className="ml-4">{year}</p>
-              <p className="ml-6 tracking-wider p-0.5 md:p-1 border-2 rounded-sm  text-xs dark:font-semibold text-zinc-500 dark:text-zinc-500 bg-background">
-                {certificate}
-              </p>
             </div>
             <div className="ml-0.5 md:ml-1 flex items-center gap-0.5 md:gap-1 lg:gap-2 xl:gap-3">
               {genres.map((genre: string, index: number) => {

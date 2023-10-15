@@ -8,11 +8,13 @@ export default function Home() {
       <AppBar showSearch={true} actions="login" />
       <div className="min-h-screen h-fit w-full">
         <HeroCarousel />
-        <Section title={"Recommended"} />
-        <Section title={"Action"} />
-        <Section title={"Adventure"} />
-        <Section title={"Horror"} />
-        <Section title={"Romance"} />
+        <Section title={"Action"} genre={"Action"} />
+        <Section title={"Adventure"} genre={"Adventure"} />
+        <Section title={"Comedy"} genre={"Comedy"} />
+        <Section title={"Drama"} genre={"Drama"} />
+        <Section title={"Mystery"} genre={"Mystery"} />
+        <Section title={"Sci-Fi"} genre={"Sci-Fi"} />
+        <Section title={"Thriller"} genre={"Thriller"} />
       </div>
     </main>
   );
