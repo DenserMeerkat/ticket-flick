@@ -73,7 +73,7 @@ const HeroCarousel = () => {
         <div className="md:max-w-[1000px] aspect-video h-full w-full md:w-[80%] lg:w-[75%] xl:w-[70%] md:rounded-sm overflow-clip">
           <Carousel
             ref={carouselRef}
-            className="z-0"
+            className="z-0 scale-[101%]"
             ssr={true}
             swipeable={true}
             draggable={true}
@@ -95,7 +95,7 @@ const HeroCarousel = () => {
                   href={`/movie/${movie.id}`}
                   key={movie.id}
                   className=" aspect-video flex items-center justify-center
-               border bg-zinc-100 dark:bg-zinc-800 overflow-clip relative"
+               md:border bg-zinc-100 dark:bg-zinc-800 overflow-clip relative"
                 >
                   <Image
                     className="z-0"
@@ -125,7 +125,7 @@ export default HeroCarousel;
 
 const CarouselThumbs = (props: any) => {
   const { className, slides, activeSlide, onClick } = props;
-  const commonTail = `w-48 mr-2 md:w-full border md:mb-3 rounded-sm transition-colors overflow-clip`;
+  const commonTail = `w-48 mr-2 md:w-full md:mb-3 rounded-sm transition-colors overflow-clip`;
   const activeTail = `${commonTail} bg-slate-200 dark:bg-slate-400/[0.3]`;
   const inactiveTail = `${commonTail} bg-slate-100 dark:bg-slate-500/[0.3]`;
   return (
@@ -165,8 +165,8 @@ const CarouselThumbs = (props: any) => {
 };
 
 const CustomDot = ({ index, active, onClick, carouselState }: DotProps) => {
-  const activeDotStyles = `w-3 h-2 border rounded-full mx-1 mb-3 bg-zinc-900 dark:bg-zinc-200 transition-all`;
-  const dotStyles = `w-2 h-2 rounded-full mx-1 mb-3 bg-zinc-300 dark:bg-zinc-700 transition-all`;
+  const activeDotStyles = `w-3 h-2 rounded-full mx-1 mb-3 bg-zinc-200 transition-all`;
+  const dotStyles = `w-2 h-2 rounded-full mx-1 mb-3 bg-zinc-700 transition-all`;
   return (
     <button
       className={active ? activeDotStyles : dotStyles}
