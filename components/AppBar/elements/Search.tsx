@@ -1,17 +1,17 @@
 "use client";
 import React from "react";
 import SearchBox from "./SearchBox";
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect } from "react";
+
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { SearchIcon } from "lucide-react";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Input } from "@/components/ui/input";
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
+import { Frown } from "lucide-react";
 import { Movie } from "@/types/movieType";
 import { movies } from "@/lib/movies";
 import Image from "next/legacy/image";
@@ -22,78 +22,78 @@ const Search = () => {
   const [isDomLoaded, setDomLoaded] = useState(false);
   const [openSearch, setSearchOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [results, setResults] = useState<Movie[]>([]);
+  const [results, setResults] = useState<Movie[]>(movies);
 
-  function handleKeyPress(event: KeyboardEvent) {
-    if ((event.ctrlKey || event.metaKey) && event.key === "k") {
-      event.preventDefault();
-      setSearchOpen((prev) => !prev);
-    }
-  }
   useEffect(() => {
     setDomLoaded(true);
-    return () => {};
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setSearchOpen((open) => !open);
+      }
+    };
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
   }, []);
-  useEffect(() => {
-    if (inputValue === "") return setResults([]);
+
+  const onValueChange = (value: string) => {
+    const inputValue = value;
+    setInputValue(inputValue);
+    if (inputValue === "") return setResults(movies);
     setResults(
       movies.filter((movie) =>
         movie.name.toLowerCase().includes(inputValue.toLowerCase())
       )
     );
-    document.addEventListener("keydown", handleKeyPress);
-    return () => {
-      document.removeEventListener("keydown", handleKeyPress);
-    };
-  }, [inputValue]);
-
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const inputValue = event.target.value;
-    setInputValue(inputValue);
   };
+
   return (
     <>
       {isDomLoaded && (
-        <Dialog
-          open={openSearch}
-          onOpenChange={() => {
-            setResults([]);
-            setSearchOpen((prev) => !prev);
-          }}
-        >
-          <DialogTrigger>
-            <SearchBox
-              open={openSearch}
-              onClick={() => setSearchOpen((prev) => !prev)}
+        <>
+          <SearchBox
+            open={openSearch}
+            onClick={() => setSearchOpen((prev) => !prev)}
+          />
+          <CommandDialog open={openSearch} onOpenChange={setSearchOpen}>
+            <CommandInput
+              value={inputValue}
+              placeholder="Type movie title"
+              onValueChange={onValueChange}
             />
-          </DialogTrigger>
-          <DialogContent className="w-full max-w-xl max-h-[calc(100vh-16rem)] p-1">
-            <DialogHeader>
-              <DialogTitle>
-                <div className="flex w-full items-center gap-1">
-                  <SearchIcon className="h-5 w-5 ml-3" />
-                  <Input
-                    className="mr-8 border-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:ring-offset-transparent focus-visible:ring-transparent"
-                    type="text"
-                    placeholder="Type movie title"
-                    onChange={handleInputChange}
-                  />
+            <CommandList className="md:static w-full max-w-xl max-h-[calc(100vh-6rem)] md:max-h-[calc(100vh-10rem)] h-fit">
+              <CommandEmpty className="p-2">
+                <div className="py-4 h-fit  rounded-sm flex items-center justify-center gap-3 bg-zinc-50 dark:bg-zinc-900 ">
+                  <Frown className="h-4 w-4" />{" "}
+                  <p className="text-sm font-medium tracking-wide">
+                    No Movies found.
+                  </p>
                 </div>
-              </DialogTitle>
-              {results.length > 1 && (
-                <div className="h-[1px] w-full bg-zinc-300 dark:bg-zinc-700" />
-              )}
-            </DialogHeader>
-            {results.length > 1 && (
-              <div className="h-full md:h-96 max-w-2xl rounded-sm overflow-y-scroll">
-                <>
-                  {results.map((movie) => {
-                    const poster = `/images/poster/${movie.id}_poster.jpg`;
-                    return (
+              </CommandEmpty>
+              <CommandGroup
+                className="h-min"
+                heading={
+                  <p className="text-end">
+                    {inputValue.length == 0
+                      ? "All Movies"
+                      : `Found ${results.length} movies`}
+                  </p>
+                }
+              >
+                {results.map((movie: Movie, index: number) => {
+                  const poster = `/images/poster/${movie.id}_poster.jpg`;
+                  return (
+                    <CommandItem
+                      key={movie.id}
+                      value={movie.name}
+                      //forceMount={true}
+                      className={`rounded-sm cursor-pointer ${
+                        index != results.length - 1 ? "mb-2" : ""
+                      } bg-zinc-50 hover:bg-zinc-200 dark:bg-zinc-900 hover:dark:bg-zinc-800 transition-colors`}
+                    >
                       <Link
                         href={`/movie/${movie.id}`}
-                        key={movie.id}
-                        className="flex items-center gap-4 text-sm rounded-sm py-1 px-1 mb-2 bg-zinc-50 hover:bg-zinc-200 dark:bg-zinc-900 hover:dark:bg-zinc-800 transition-colors"
+                        className="flex items-center gap-4 text-sm "
                       >
                         <div className="w-[60px] aspect-[2/3]">
                           <AspectRatio
@@ -133,13 +133,13 @@ const Search = () => {
                           </div>
                         </div>
                       </Link>
-                    );
-                  })}
-                </>
-              </div>
-            )}
-          </DialogContent>
-        </Dialog>
+                    </CommandItem>
+                  );
+                })}
+              </CommandGroup>
+            </CommandList>
+          </CommandDialog>
+        </>
       )}
     </>
   );
