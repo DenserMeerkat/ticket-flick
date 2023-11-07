@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Link from "next/link";
 import { getMovieById } from "@/lib/movieUtils";
 import Image from "next/legacy/image";
+import { AppStateContext } from "@/components/utils/AppStateContext";
 
 const CarouselItem = (props: any) => {
+  const state = useContext(AppStateContext);
   const title = props.title;
+  const movies = state!.movieList;
   const id = props.id;
-  const movie = getMovieById(id)!;
+  const movie = getMovieById(id, movies);
   const poster = `/images/poster/${id}_poster.jpg`;
   const banner = `/images/banner/${id}_banner.jpg`;
   return (
@@ -19,7 +22,7 @@ const CarouselItem = (props: any) => {
         >
           <Image
             className="z-0"
-            key={`${movie.id}+banner`}
+            key={`${movie!.id}+banner`}
             src={banner}
             blurDataURL={banner.replace("images", "min_images")}
             placeholder="blur"
@@ -28,7 +31,7 @@ const CarouselItem = (props: any) => {
           ></Image>
           <div className="absolute inset-0 z-[1] bg-gradient-to-t from-zinc-950 to-transparent opacity-90 md:opacity-100" />
           <p className="absolute left-2 bottom-2 z-10 hidden md:block text-xs lg:text-base tracking-wider font-semibold select-none text-white">
-            {movie.name}
+            {movie!.name}
           </p>
         </AspectRatio>
       </div>
