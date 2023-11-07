@@ -11,7 +11,7 @@ const CarouselItem = (props: any) => {
   const poster = `/images/poster/${id}_poster.jpg`;
   const banner = `/images/banner/${id}_banner.jpg`;
   return (
-    <Link href={`/movie/${id}`}>
+    <Link href={{ pathname: `/movie`, query: { id: id } }}>
       <div className="bg-zinc-100 dark:bg-zinc-800 rounded-sm md:rounded-md overflow-clip mr-2 md:mr-3 lg:mr-4">
         <AspectRatio
           ratio={16 / 9}

@@ -92,8 +92,8 @@ const Search = () => {
                       } bg-zinc-50 hover:bg-zinc-200 dark:bg-zinc-900 hover:dark:bg-zinc-800 transition-colors`}
                     >
                       <Link
-                        href={`/movie/${movie.id}`}
-                        className="flex items-center gap-4 text-sm "
+                        href={{ pathname: `/movie`, query: { id: movie.id } }}
+                        className="flex items-center gap-4 text-sm w-full"
                       >
                         <div className="w-[60px] aspect-[2/3]">
                           <AspectRatio

@@ -1,22 +1,22 @@
+"use client";
 import AppBar from "@/components/AppBar/AppBar";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/legacy/image";
-import { movies } from "@/lib/movies";
 import { calcRunTime, getMovieById } from "@/lib/movieUtils";
-import React from "react";
-import { buttonVariants } from "@/components/ui/button";
+import React, { useState } from "react";
+import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import NotFoundPage from "./404";
-
-export const generateStaticParams = async () => {
-  return movies.map((movie) => ({
-    slug: movie.id,
-  }));
-};
+import { useSearchParams } from "next/navigation";
+import YouTubePlayer from "@/components/Movie/VideoPlayer";
+import { Toggle } from "@/components/ui/toggle";
+import { Volume, VolumeX } from "lucide-react";
 
 export default function MoviePage(props: any) {
-  const id = props.params.slug;
-  const movie = getMovieById(id);
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
+  if (id === undefined || id == null) return <NotFoundPage />;
+  const movie = getMovieById(parseInt(id));
   if (movie === undefined) return <NotFoundPage />;
   const title = movie.name;
   const desc = movie.description.join(" ");
@@ -29,26 +29,60 @@ export default function MoviePage(props: any) {
   const directors = movie.director;
   const poster = `/images/poster/${id}_poster.jpg`;
   const banner = `/images/banner/${id}_banner.jpg`;
+  const [isMuted, setIsMuted] = useState(true);
+
+  function onPressedChangeMute(value: boolean) {
+    setIsMuted(value);
+  }
+
   return (
     <main>
       <AppBar showSearch={true} actions="login" />
       <div className="h-max min-h-[calc(100vh-8rem)] w-full  relative">
         <div className="absolute right-0 w-[70%] aspect-[16/9] z-[-2] bg-gradient-to-r from-white dark:from-zinc-950 to-transparent"></div>
         <div className="absolute right-0 w-[70%] aspect-[16/9] z-[-2] bg-gradient-to-t from-white dark:from-zinc-950 to-transparent"></div>
+        <div className="absolute right-0 p-1 md:p-3 lg:p-4 xl:p-6 ">
+          {movie.video != "" ? (
+            <Toggle
+              className="z-10 rounded-full bg-zinc-50/[0.5] data-[state=on]:bg-zinc-50 dark:bg-zinc-900/[0.5] data-[state=on]:dark:bg-zinc-800"
+              size={"sm"}
+              aria-label="Toggle mute"
+              pressed={isMuted}
+              onPressedChange={onPressedChangeMute}
+            >
+              {isMuted ? (
+                <VolumeX className=" h-4 w-4" />
+              ) : (
+                <Volume className=" h-4 w-4" />
+              )}
+            </Toggle>
+          ) : (
+            <span></span>
+          )}
+        </div>
         <div className="absolute right-0 w-[70%] z-[-5]">
-          <AspectRatio
-            className="relative w-full border-l border-b border-white dark:border-zinc-950"
-            ratio={16 / 9}
-          >
-            <Image
-              key={`${movie.id}+banner`}
-              src={banner}
-              alt="Movie Banner"
-              blurDataURL={banner.replace("images", "min_images")}
-              placeholder="blur"
-              layout="fill"
-            ></Image>
-          </AspectRatio>
+          {movie.video != "" ? (
+            <AspectRatio
+              className="relative w-full border-l border-b border-white dark:border-zinc-950"
+              ratio={16 / 9}
+            >
+              <YouTubePlayer videoLink={movie.video} isMuted={isMuted} />
+            </AspectRatio>
+          ) : (
+            <AspectRatio
+              className="relative w-full border-l border-b border-white dark:border-zinc-950"
+              ratio={16 / 9}
+            >
+              <Image
+                key={`${movie.id}+banner`}
+                src={banner}
+                alt="Movie Banner"
+                blurDataURL={banner.replace("images", "min_images")}
+                placeholder="blur"
+                layout="fill"
+              ></Image>
+            </AspectRatio>
+          )}
         </div>
         <div className="max-w-7xl xl:mx-auto lg:flex md:items-center xl:items-end px-2 sm:px-4 md:px-8 py-6 sm:py-8 md:py-12">
           <div className="min-w-[80px] sm:min-w-[120px] w-[20%] max-w-[240px] xl:max-w-[280px] aspect-[2/3]">
