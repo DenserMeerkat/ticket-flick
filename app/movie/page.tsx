@@ -39,8 +39,8 @@ export default function MoviePage(props: any) {
     <main>
       <AppBar showSearch={true} actions="login" />
       <div className="h-max min-h-[calc(100vh-8rem)] w-full  relative">
-        <div className="absolute right-0 w-[70%] aspect-[16/9] z-[-2] bg-gradient-to-r from-white dark:from-zinc-950 to-transparent"></div>
-        <div className="absolute right-0 w-[70%] aspect-[16/9] z-[-2] bg-gradient-to-t from-white dark:from-zinc-950 to-transparent"></div>
+        <div className="absolute right-0 w-[70%] aspect-[16/9] z-[-2] bg-gradient-to-r from-white via-transparent dark:from-zinc-950  to-transparent"></div>
+        <div className="absolute right-0 w-[70%] aspect-[16/9] z-[-2] bg-gradient-to-t from-white via-transparent dark:from-zinc-950 to-transparent"></div>
         <div className="absolute right-0 p-1 md:p-3 lg:p-4 xl:p-6 ">
           {movie.video != "" ? (
             <Toggle
@@ -84,7 +84,7 @@ export default function MoviePage(props: any) {
             </AspectRatio>
           )}
         </div>
-        <div className="max-w-7xl xl:mx-auto lg:flex md:items-center xl:items-end px-2 sm:px-4 md:px-8 py-6 sm:py-8 md:py-12">
+        <div className="max-w-7xl xl:mx-auto lg:flex md:items-center xl:items-end px-2  sm:px-4 md:pr-8 py-6 sm:py-8 md:py-12 lg:pt- xl:pt-24">
           <div className="min-w-[80px] sm:min-w-[120px] w-[20%] max-w-[240px] xl:max-w-[280px] aspect-[2/3]">
             <AspectRatio
               className="rounded-sm md:rounded-lg overflow-clip border shadow-lg"
@@ -104,9 +104,9 @@ export default function MoviePage(props: any) {
             <h1 className="mt-8 md:mt-6 text-xl sm:text-2xl md:text-4xl lg:text-[2.5rem] xl:text-[2.75rem] font-bold">
               {title}
             </h1>
-            <div className="my-2 md:my-4 lg:my-6 flex items-center dark:font-semibold text-xs md:text-base text-zinc-500 dark:text-zinc-500">
+            <div className="my-2 md:my-4 lg:my-6 flex items-center font-medium  dark:font-semibold text-xs md:text-base text-zinc-500 dark:text-zinc-500">
               <div className="ml-0.5 md:ml-1 w-fit min-w-[28px] p-1 py-0.5 md:p-1 border md:border-2 rounded-sm  bg-background flex justify-center">
-                <p className="tracking-wider text-[0.5rem] md:text-xs dark:font-semibold text-zinc-500 dark:text-zinc-500 ">
+                <p className="tracking-wider text-[0.5rem] md:text-xs font-medium  dark:font-semibold text-zinc-500 dark:text-zinc-500 ">
                   {certificate}
                 </p>
               </div>
@@ -130,7 +130,7 @@ export default function MoviePage(props: any) {
                 );
               })}
             </div>
-            <p className="mt-4 md:mt-8 text-xs md:text-base tracking-wider max-w-3xl">
+            <p className="mt-4 md:mt-8 font-medium dark:font-normal text-xs md:text-base tracking-wider max-w-3xl">
               {desc}
             </p>
             <div className="ml-0.5 md:ml-1 mt-2 md:mt-4 flex items-center gap-2 md:gap-3 lg:gap-4">
