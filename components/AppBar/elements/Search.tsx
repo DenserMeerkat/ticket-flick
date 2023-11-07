@@ -86,13 +86,13 @@ const Search = () => {
                     <CommandItem
                       key={movie.id}
                       value={movie.name}
-                      //forceMount={true}
                       className={`rounded-sm cursor-pointer ${
                         index != results.length - 1 ? "mb-2" : ""
                       } bg-zinc-50 hover:bg-zinc-200 dark:bg-zinc-900 hover:dark:bg-zinc-800 transition-colors`}
                     >
                       <Link
                         href={{ pathname: `/movie`, query: { id: movie.id } }}
+                        onClick={() => setSearchOpen(false)}
                         className="flex items-center gap-4 text-sm w-full"
                       >
                         <div className="w-[60px] aspect-[2/3]">
