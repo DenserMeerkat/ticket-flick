@@ -3,21 +3,24 @@ import AppBar from "@/components/AppBar/AppBar";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/legacy/image";
 import { calcRunTime, getMovieById } from "@/lib/movieUtils";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import NotFoundPage from "./404";
+import { AppStateContext } from "@/components/utils/AppStateContext";
 import { useSearchParams } from "next/navigation";
 import YouTubePlayer from "@/components/Movie/VideoPlayer";
 import { Toggle } from "@/components/ui/toggle";
 import { Volume, VolumeX } from "lucide-react";
 
 export default function MoviePage(props: any) {
+  const state = useContext(AppStateContext);
+  const movies = state!.movieList;
   const [isMuted, setIsMuted] = useState(true);
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
   if (id === undefined || id == null) return <NotFoundPage />;
-  const movie = getMovieById(parseInt(id));
+  const movie = getMovieById(parseInt(id), movies);
   if (movie === undefined) return <NotFoundPage />;
   const title = movie.name;
   const desc = movie.description.join(" ");

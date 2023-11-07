@@ -1,20 +1,21 @@
 "use client";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import Carousel from "react-multi-carousel";
 import { DotProps } from "react-multi-carousel/lib/types";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
-import { useMediaQuery } from "react-responsive";
-import { movies } from "@/lib/movies";
+
+import { AppStateContext } from "@/components/utils/AppStateContext";
 import { Movie } from "@/types/movieType";
 import Image from "next/legacy/image";
 import Link from "next/link";
 
 const HeroCarousel = () => {
+  const state = useContext(AppStateContext);
+  const movies = state!.movieList;
   const [domLoaded, setDomLoaded] = useState(false);
   useEffect(() => {
     setDomLoaded(true);
   }, []);
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const carouselRef = useRef<Carousel>(null);
   const list = movies.slice(0, 5);
   const responsive = {
