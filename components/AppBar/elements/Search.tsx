@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import SearchBox from "./SearchBox";
 import { useState, useEffect } from "react";
 
@@ -11,14 +11,16 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
+import { AppStateContext } from "@/components/utils/AppStateContext";
 import { Frown } from "lucide-react";
 import { Movie } from "@/types/movieType";
-import { movies } from "@/lib/movies";
 import Image from "next/legacy/image";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Link from "next/link";
 
 const Search = () => {
+  const state = useContext(AppStateContext);
+  const movies = state!.movieList;
   const [isDomLoaded, setDomLoaded] = useState(false);
   const [openSearch, setSearchOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");

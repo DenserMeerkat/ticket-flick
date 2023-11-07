@@ -18,7 +18,7 @@ export function calcRunTime(minutes: number): string {
   }
 }
 
-export function getMovieById(id: number): Movie | undefined {
+export function getMovieById(id: number, list: Movie[]): Movie | undefined {
   return movies.find((movie) => movie.id === id.toString());
 }
 
