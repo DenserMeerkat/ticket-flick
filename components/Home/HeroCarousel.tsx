@@ -92,7 +92,7 @@ const HeroCarousel = () => {
               const banner = "/images/banner/" + movie.id + "_banner.jpg";
               return (
                 <Link
-                  href={`/movie/${movie.id}`}
+                  href={{ pathname: `/movie`, query: { id: movie.id } }}
                   key={movie.id}
                   className=" aspect-video flex items-center justify-center
                md:border bg-zinc-100 dark:bg-zinc-800 overflow-clip relative"

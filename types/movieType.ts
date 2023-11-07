@@ -5,6 +5,7 @@ export interface Movie {
   runTime: string;
   rating: string;
   votes: string;
+  video: string;
   metaScore: string;
   gross: string;
   genre: string[];

@@ -19,6 +19,7 @@ export const movies: Movie[] = [
       "Ryo Narita",
       "Aoi YÃ»ki",
     ],
+    video: "https://www.youtube.com/watch?v=xX7xWEh6ujk",
     description: [
       "Two",
       "teenagers",
@@ -70,6 +71,7 @@ export const movies: Movie[] = [
       "Brian Tyree Henry",
       "Luna Lauren Velez",
     ],
+    video: "https://youtu.be/cqGjhVJWtEg?si=7L6qz1ZfG_XJLiB1&t=14",
     description: [
       "Miles",
       "Morales",
@@ -131,6 +133,7 @@ export const movies: Movie[] = [
       "Elizabeth Debicki",
       "Juhan Ulfsak",
     ],
+    video: "https://www.youtube.com/watch?v=kWCAB65rAYI",
     description: [
       "Armed",
       "with",
@@ -188,6 +191,7 @@ export const movies: Movie[] = [
       "Jeffrey Wright",
       "Colin Farrell",
     ],
+    video: "https://www.youtube.com/watch?v=mqqft2x_Aa4",
     description: [
       "When",
       "a",
@@ -230,6 +234,7 @@ export const movies: Movie[] = [
     certification: "R",
     director: ["Francis Ford Coppola"],
     stars: ["Marlon Brando", "Al Pacino", "James Caan", "Diane Keaton"],
+    video: "https://youtu.be/UaVTIH8mujA?si=6WPXE0TYtgDfR2Ob&t=9",
     description: [
       "Don",
       "Vito",
@@ -279,6 +284,7 @@ export const movies: Movie[] = [
     certification: "R",
     director: ["Christopher Nolan"],
     stars: ["Cillian Murphy", "Emily Blunt", "Matt Damon", "Robert Downey Jr."],
+    video: "https://youtu.be/uYPbbksJxIg?si=lgVFhGKc2T2dyx37&t=7",
     description: [
       "The",
       "story",
@@ -313,6 +319,7 @@ export const movies: Movie[] = [
     certification: "PG-13",
     director: ["Christopher Nolan"],
     stars: ["Christian Bale", "Tom Hardy", "Anne Hathaway", "Gary Oldman"],
+    video: "https://www.youtube.com/watch?v=aj1Q_BAqwa8",
     description: [
       "Eight",
       "years",
@@ -368,6 +375,7 @@ export const movies: Movie[] = [
       "Mark Ruffalo",
       "Ben Kingsley",
     ],
+    video: "https://youtu.be/v8yrZSkKxTA?si=2Vce8q3Gy76fzqyX&t=2",
     description: [
       "Teddy",
       "Daniels",
@@ -419,6 +427,7 @@ export const movies: Movie[] = [
     certification: "PG-13",
     director: ["Jon Watts"],
     stars: ["Tom Holland", "Zendaya", "Benedict Cumberbatch", "Jacob Batalon"],
+    video: "https://www.youtube.com/watch?v=7PnksSXx_Js",
     description: [
       "With",
       '"Spider-Man\'s"',
@@ -470,6 +479,7 @@ export const movies: Movie[] = [
     certification: "R",
     director: ["Lokesh Kanagaraj"],
     stars: ["Kamal Haasan", "Vijay Sethupathi", "Fahadh Faasil", "Narain"],
+    video: "https://www.youtube.com/watch?v=OKBMCL-frPU",
     description: [
       "A",
       "special",
@@ -521,6 +531,7 @@ export const movies: Movie[] = [
     certification: "PG-13",
     director: ["Christopher Nolan"],
     stars: ["Christian Bale", "Michael Caine", "Ken Watanabe", "Liam Neeson"],
+    video: "https://www.youtube.com/watch?v=5oeyTU36lBw",
     description: [
       "After",
       "witnessing",
@@ -570,6 +581,7 @@ export const movies: Movie[] = [
     certification: "PG-13",
     director: ["Christopher Nolan"],
     stars: ["Christian Bale", "Heath Ledger", "Aaron Eckhart", "Michael Caine"],
+    video: "https://www.youtube.com/watch?v=8zBAw3_AXe8",
     description: [
       "When",
       "the",
@@ -624,6 +636,7 @@ export const movies: Movie[] = [
       "Elliot Page",
       "Ken Watanabe",
     ],
+    video: "https://youtu.be/7vp1yZIRcOc?si=dJiJ-gbrKbAnJJGz&t=9",
     description: [
       "A",
       "thief",
@@ -685,6 +698,7 @@ export const movies: Movie[] = [
       "Jessica Chastain",
       "Mackenzie Foy",
     ],
+    video: "https://www.youtube.com/watch?v=onVhbeY7nLM",
     description: [
       "When",
       "Earth",
@@ -739,6 +753,7 @@ export const movies: Movie[] = [
       "Mary McDonnell",
       "Holmes Osborne",
     ],
+    video: "https://www.youtube.com/watch?v=rPeGaos7DB4",
     description: [
       "After",
       "narrowly",
@@ -790,6 +805,7 @@ export const movies: Movie[] = [
       "Sigourney Weaver",
       "Stephen Lang",
     ],
+    video: "https://www.youtube.com/watch?v=3MxvwviRyMw",
     description: [
       "Jake",
       "Sully",
@@ -846,6 +862,7 @@ export const movies: Movie[] = [
     certification: "PG-13",
     director: ["Zack Snyder"],
     stars: ["Ben Affleck", "Gal Gadot", "Jason Momoa", "Ezra Miller"],
+    video: "https://www.youtube.com/watch?v=bV5TBOKIvGI",
     description: [
       "Fueled",
       "by",
@@ -892,6 +909,7 @@ export const movies: Movie[] = [
     certification: "PG-13",
     director: ["Seong-Hu Park"],
     stars: ["Chinatsu Akasaki", "Aya EndÃ`", "Kana Hanazawa", "Show Hayami"],
+    video: "https://www.youtube.com/watch?v=kbgYby4KSOY",
     description: [
       "Yuta",
       "Okkotsu,",
@@ -952,6 +970,7 @@ export const movies: Movie[] = [
       "Barkhad Abdirahman",
       "Catherine Keener",
     ],
+    video: "https://www.youtube.com/watch?v=ZfFnyDJTH4Y",
     description: [
       "The",
       "true",
@@ -987,7 +1006,6 @@ export const movies: Movie[] = [
       "years.",
     ],
   }, // Captain Phillips
-
   {
     id: "113",
     name: "Raiders of the Lost Ark",
@@ -1001,6 +1019,7 @@ export const movies: Movie[] = [
     certification: "PG",
     director: ["Steven Spielberg"],
     stars: ["Harrison Ford", "Karen Allen", "Paul Freeman", "John Rhys-Davies"],
+    video: "https://www.youtube.com/watch?v=mC1ikwQ5Zgc",
     description: [
       "In",
       "1936,",
@@ -1050,6 +1069,7 @@ export const movies: Movie[] = [
       "Elizabeth Berridge",
       "Roy Dotrice",
     ],
+    video: "https://www.youtube.com/watch?v=exaEt7szfi4",
     description: [
       "The",
       "life,",
@@ -1101,6 +1121,7 @@ export const movies: Movie[] = [
       "Helena Bonham Carter",
       "Derek Jacobi",
     ],
+    video: "https://youtu.be/EcxBrTvLbBM?si=SIDQDK7slD20xegn&t=6",
     description: [
       "The",
       "story",
@@ -1147,6 +1168,7 @@ export const movies: Movie[] = [
     certification: "PG-13",
     director: ["Bernardo Bertolucci"],
     stars: ["John Lone", "Joan Chen", "Peter O'Toole", "Ruocheng Ying"],
+    video: "https://www.youtube.com/watch?v=A4cH6g1wD5g",
     description: [
       "Bernardo",
       "Bertolucci's",
@@ -1177,6 +1199,7 @@ export const movies: Movie[] = [
     certification: "PG",
     director: ["Ertem Egilmez"],
     stars: ["Kemal Sunal", "MÃ¼nir Ã-zkul", "Halit AkÃ§atepe", "Tarik Akan"],
+    video: "",
     description: [
       "Lazy,",
       "uneducated",
@@ -1231,6 +1254,7 @@ export const movies: Movie[] = [
     certification: "PG",
     director: ["Kartal Tibet"],
     stars: ["Kemal Sunal", "MÃ¼jde Ar", "Adile Nasit", "Sener Sen"],
+    video: "",
     description: [
       "Two",
       "traditionally",
@@ -1279,6 +1303,7 @@ export const movies: Movie[] = [
     certification: "Not Rated",
     director: ["Gowtam Tinnanuri"],
     stars: ["Nani", "Shraddha Srinath", "Sathyaraj", "Ronit Kamra"],
+    video: "https://www.youtube.com/watch?v=QK_xbskNhug",
     description: [
       "A",
       "failed",
@@ -1318,6 +1343,7 @@ export const movies: Movie[] = [
     certification: "PG-13",
     director: ["Rajkumar Hirani"],
     stars: ["Aamir Khan", "Madhavan", "Mona Singh", "Sharman Joshi"],
+    video: "https://youtu.be/K0eDlFX9GMc?si=igVTjXNyEvLerRSh&t=15",
     description: [
       "Two",
       "friends",
@@ -1376,6 +1402,7 @@ export const movies: Movie[] = [
       "Jack Oakie",
       "Reginald Gardiner",
     ],
+    video: "",
     description: [
       "Dictator",
       "Adenoid",
@@ -1417,6 +1444,7 @@ export const movies: Movie[] = [
       "Bahare Seddiqi",
       "Nafise Jafar-Mohammadi",
     ],
+    video: "https://www.youtube.com/watch?v=1XkC9it8OPs",
     description: [
       "After",
       "a",
@@ -1472,6 +1500,7 @@ export const movies: Movie[] = [
       "Japtej Singh",
       "Divya Dutta",
     ],
+    video: "https://youtu.be/WbblCMem1ME?si=ldxfu1Sviq3g54v5&t=11",
     description: [
       "The",
       "truth",
@@ -1504,6 +1533,7 @@ export const movies: Movie[] = [
     certification: "PG",
     director: ["John G. Avildsen"],
     stars: ["Sylvester Stallone", "Talia Shire", "Burt Young", "Carl Weathers"],
+    video: "https://www.youtube.com/watch?v=_YYmfM2TfUA",
     description: [
       "A",
       "small-time",
@@ -1549,6 +1579,7 @@ export const movies: Movie[] = [
     certification: "PG-13",
     director: ["Gavin O'Connor"],
     stars: ["Tom Hardy", "Nick Nolte", "Joel Edgerton", "Jennifer Morrison"],
+    video: "https://www.youtube.com/watch?v=9xDO7yhPdG8",
     description: [
       "The",
       "youngest",
@@ -1605,6 +1636,7 @@ export const movies: Movie[] = [
     certification: "PG-13",
     director: ["Robert Zemeckis"],
     stars: ["Tom Hanks", "Robin Wright", "Gary Sinise", "Sally Field"],
+    video: "https://www.youtube.com/watch?v=bSMxl1V8FSg",
     description: [
       "The",
       "history",
@@ -1660,6 +1692,7 @@ export const movies: Movie[] = [
       "Giorgio Cantarini",
       "Giustino Durano",
     ],
+    video: "https://www.youtube.com/watch?v=9lTSqc1UnLU",
     description: [
       "When",
       "an",
@@ -1714,6 +1747,7 @@ export const movies: Movie[] = [
       "Paul Henreid",
       "Claude Rains",
     ],
+    video: "https://youtu.be/MF7JH_54d8c?si=Taqp_0UK8_-BAmnN&t=9",
     description: [
       "A",
       "cynical",
@@ -1762,6 +1796,7 @@ export const movies: Movie[] = [
       "Antonella Attili",
       "Isa Danieli",
     ],
+    video: "https://www.youtube.com/watch?v=ozkqm2ifMw8",
     description: [
       "A",
       "filmmaker",
@@ -1811,6 +1846,7 @@ export const movies: Movie[] = [
       "Jasmine Trinca",
       "Adriana Asti",
     ],
+    video: "https://www.youtube.com/watch?v=8UWSd2eU8s8",
     description: [
       "An",
       "Italian",
@@ -1843,6 +1879,7 @@ export const movies: Movie[] = [
     certification: "PG",
     director: ["Hayao Miyazaki"],
     stars: ["Daveigh Chase", "Suzanne Pleshette", "Miyu Irino", "Rumi Hiiragi"],
+    video: "https://youtu.be/ByXuk9QqQkk?si=mgA5XGzN5ZpyESIa&t=4",
     description: [
       "During",
       "her",
@@ -1888,6 +1925,7 @@ export const movies: Movie[] = [
     certification: "PG",
     director: ["Aamir Khan", "Amole Gupte"],
     stars: ["Darsheel Safary", "Aamir Khan", "Tanay Chheda", "Sachet Engineer"],
+    video: "https://www.youtube.com/watch?v=bljnpdk-m-Y",
     description: [
       "An",
       "eight-year-old",
@@ -1939,6 +1977,7 @@ export const movies: Movie[] = [
       "Tatsuya GashÃ»in",
       "Akihiro Miwa",
     ],
+    video: "https://www.youtube.com/watch?v=iwROgK94zcM",
     description: [
       "When",
       "an",
@@ -1998,6 +2037,7 @@ export const movies: Movie[] = [
       "Jackie Coogan",
       "Carl Miller",
     ],
+    video: "",
     description: [
       "The",
       "Tramp",
@@ -2028,6 +2068,7 @@ export const movies: Movie[] = [
     certification: "Not Rated",
     director: ["Ã‡agan Irmak"],
     stars: ["Ã‡etin Tekindor", "Fikret Kuskan", "HÃ¼meyra", "Ege Tanman"],
+    video: "",
     description: [
       "The",
       "family",
@@ -2066,6 +2107,7 @@ export const movies: Movie[] = [
       "Rupert Grint",
       "Michael Gambon",
     ],
+    video: "https://www.youtube.com/watch?v=G6O9jtjSaDk",
     description: [
       "Harry,",
       "Ron,",
@@ -2112,6 +2154,7 @@ export const movies: Movie[] = [
       "John Hurt",
       "Veronica Cartwright",
     ],
+    video: "https://www.youtube.com/watch?v=wvH0ETbYRIY",
     description: [
       "The",
       "crew",
@@ -2143,6 +2186,7 @@ export const movies: Movie[] = [
     certification: "16+",
     director: ["John Carpenter"],
     stars: ["Kurt Russell", "Wilford Brimley", "Keith David", "Richard Masur"],
+    video: "https://www.youtube.com/watch?v=ebMgBIy6mTo",
     description: [
       "A",
       "research",
@@ -2182,6 +2226,7 @@ export const movies: Movie[] = [
       "Nilli Karim",
       "Mohamed Mamdouh",
     ],
+    video: "",
     description: [
       "While",
       "trying",
@@ -2216,6 +2261,7 @@ export const movies: Movie[] = [
     certification: "R",
     director: ["Edgar Wright"],
     stars: ["Simon Pegg", "Nick Frost", "Kate Ashfield", "Lucy Davis"],
+    video: "https://youtu.be/LIfcaZ4pC-4?si=8K-CSgYJ_9hYwgBL&t=3",
     description: [
       "The",
       "uneventful,",
@@ -2256,6 +2302,7 @@ export const movies: Movie[] = [
       "Bradley Whitford",
       "Catherine Keener",
     ],
+    video: "https://www.youtube.com/watch?v=DzfpyUB60YY",
     description: [
       "A",
       "young",
@@ -2297,6 +2344,7 @@ export const movies: Movie[] = [
     certification: "R",
     director: ["Tomas Alfredson"],
     stars: ["KÃ¥re Hedebrant", "Lina Leandersson", "Per Ragnar", "Henrik Dahl"],
+    video: "https://youtu.be/o2LywKbT5oM?si=H7vg3zThY55HjVvB&t=9",
     description: [
       "Oskar,",
       "an",
