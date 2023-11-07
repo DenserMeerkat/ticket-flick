@@ -13,6 +13,7 @@ import { Toggle } from "@/components/ui/toggle";
 import { Volume, VolumeX } from "lucide-react";
 
 export default function MoviePage(props: any) {
+  const [isMuted, setIsMuted] = useState(true);
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
   if (id === undefined || id == null) return <NotFoundPage />;
@@ -29,7 +30,6 @@ export default function MoviePage(props: any) {
   const directors = movie.director;
   const poster = `/images/poster/${id}_poster.jpg`;
   const banner = `/images/banner/${id}_banner.jpg`;
-  const [isMuted, setIsMuted] = useState(true);
 
   function onPressedChangeMute(value: boolean) {
     setIsMuted(value);
