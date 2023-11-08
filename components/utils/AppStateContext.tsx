@@ -5,13 +5,17 @@ import { movies } from "@/lib/movies";
 
 interface AppState {
   movieList: Movie[];
-  setMovieList: (movies: Movie[]) => void;
+  setMovieList: React.Dispatch<React.SetStateAction<Movie[]>>;
   activeList: Movie[];
-  setActiveList: (movies: Movie[]) => void;
+  setActiveList: React.Dispatch<React.SetStateAction<Movie[]>>;
   users: User[];
-  setUsers: (movies: User[]) => void;
+  setUsers: React.Dispatch<React.SetStateAction<User[]>>;
   admins: User[];
-  setAdmins: (movies: User[]) => void;
+  setAdmins: React.Dispatch<React.SetStateAction<User[]>>;
+  activeUser: User | undefined;
+  setActiveUser: React.Dispatch<React.SetStateAction<User | undefined>>;
+  isAdmin: boolean;
+  setIsAdmin: (isAdmin: boolean) => void;
 }
 
 const AppStateContext = createContext<AppState | undefined>(undefined);
@@ -28,10 +32,19 @@ const AppStateProvider = ({ children }: AppStateProviderProps) => {
       id: "1",
       name: "John Doe",
       email: "johndoe@gmail.com",
-      password: "password",
+      password: "$2a$10$QUnEZ7GMdMFL5nOfXxJDtOeS34aIhHrPyXQJuQXL9lLU6lb5k8mOC",
     },
   ]);
-  const [admins, setAdmins] = useState<User[]>([]);
+  const [admins, setAdmins] = useState<User[]>([
+    {
+      id: "1",
+      name: "Admin",
+      email: "admin@gmail.com",
+      password: "$2a$10$QUnEZ7GMdMFL5nOfXxJDtOeS34aIhHrPyXQJuQXL9lLU6lb5k8mOC",
+    },
+  ]);
+  const [activeUser, setActiveUser] = useState<User | undefined>(undefined);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
   const state: AppState = {
     movieList,
     setMovieList,
@@ -41,6 +54,10 @@ const AppStateProvider = ({ children }: AppStateProviderProps) => {
     setUsers,
     admins,
     setAdmins,
+    activeUser,
+    setActiveUser,
+    isAdmin,
+    setIsAdmin,
   };
 
   return (

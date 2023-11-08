@@ -41,7 +41,7 @@ const LoginTabs = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <LoginForm />
+              <LoginForm isAdminForm={false} />
               <CardFooter className="mt-8 p-0 flex justify-center">
                 <p className="dark:text-gray-400 text-sm">
                   Don&apos;t have an account?
@@ -71,7 +71,7 @@ const LoginTabs = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <LoginForm />
+              <LoginForm isAdminForm={true} />
             </CardContent>
           </Card>
         </TabsContent>

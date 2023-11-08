@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,6 +15,11 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { AppStateContext } from "../utils/AppStateContext";
+import { User } from "@/types/userType";
+import { generateUUID } from "@/lib/login_utils";
+import hashPotato from "@/lib/hashPassword";
+import { useRouter } from "next/navigation";
 
 const formSchema = z
   .object({
@@ -30,20 +35,40 @@ const formSchema = z
     message: "Passwords don't match",
     path: ["confirm"],
   });
+
 const LoginForm = () => {
+  const router = useRouter();
+  const state = useContext(AppStateContext);
   const [showPassword, setShowPassword] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
-  function onSubmit(data: z.infer<typeof formSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
+  async function onSubmit(data: z.infer<typeof formSchema>) {
+    const currentUsers = state!.users;
+    const exists = currentUsers.find((user) => user.email === data.email);
+    if (exists) {
+      toast({
+        title: "User already Exists!",
+      });
+    } else {
+      const hashedPassword: string = await hashPotato.hashPassword(
+        data.password
+      );
+      const user: User = {
+        id: generateUUID(),
+        name: data.name,
+        email: data.email,
+        password: hashedPassword,
+      };
+      state!.setUsers((prevUsers: User[]) => {
+        return [...prevUsers, user];
+      });
+      toast({
+        title: "Account Created Successfully!",
+      });
+      router.replace(`/login?tab=user`);
+    }
+    console.log(state!.users);
   }
 
   function togglePasswordVisibility() {

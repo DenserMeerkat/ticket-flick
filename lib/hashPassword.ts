@@ -7,8 +7,10 @@ const hashPassword = async (password: string) => {
 };
 
 const comparePassword = async (password: string, hashedPassword: string) => {
-  const isNotMatch = await compare(password, hashedPassword);
-  return !isNotMatch;
+  console.log(password, hashedPassword);
+  const isMatch = await compare(password, hashedPassword);
+  console.log(isMatch);
+  return isMatch;
 };
 
 const hashPotato = { hashPassword, comparePassword };
