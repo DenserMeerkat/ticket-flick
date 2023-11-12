@@ -71,15 +71,7 @@ export function EditDialog(props: any) {
         return movie;
       }
     });
-    // toast({
-    //   title: "You submitted the following values:",
-    //   description: (
-    //     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-    //       <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-    //     </pre>
-    //   ),
-    // });
-    console.log(updatedMovieList);
+
     state!.setMovieList((prev) => updatedMovieList);
     state!.setActiveList((prev) => updatedActiveList);
     setDialogOpen(false);
@@ -157,7 +149,7 @@ export function EditDialog(props: any) {
                 <FormItem>
                   <FormLabel>Description</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="Description" {...field} rows={6} />
+                    <Textarea placeholder="Description" {...field} rows={4} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
