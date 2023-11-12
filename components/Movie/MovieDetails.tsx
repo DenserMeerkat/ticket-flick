@@ -20,8 +20,6 @@ export default function MovieDetails(props: any) {
   if (id === undefined || id == null) return <NotFoundPage />;
   const movie = getMovieById(parseInt(id), movies);
   if (movie === undefined) return <NotFoundPage />;
-  const title = movie.name;
-  const desc = movie.description.join(" ");
   const runTime = calcRunTime(parseInt(movie.runTime));
   const certificate = movie.certification;
   const year = movie.year;
@@ -33,7 +31,7 @@ export default function MovieDetails(props: any) {
   }
 
   return (
-    <div className="h-max min-h-[calc(100vh-8rem)] w-full  relative">
+    <div className="h-max min-h-[70vh] w-full  relative">
       <div className="absolute right-0 w-[75%] md:w-[70%] aspect-[16/9] z-[-2] bg-gradient-to-r from-white via-transparent dark:from-zinc-950 to-transparent"></div>
       <div className="absolute right-0 w-[75%] md:w-[70%] aspect-[16/9] z-[-2] bg-gradient-to-t from-white via-transparent dark:from-zinc-950 to-transparent"></div>
       <div className="absolute right-0 p-1 md:p-3 lg:p-4 xl:p-6 ">
@@ -60,7 +58,7 @@ export default function MovieDetails(props: any) {
         <Poster movie={movie} />
         <div className="lg:ml-8 xl:ml-12">
           <h1 className="mt-8 md:mt-6 text-xl sm:text-2xl md:text-4xl lg:text-[2.5rem] xl:text-[2.75rem] font-bold">
-            {title}
+            {movie.name}
           </h1>
           <div className="my-2 md:my-4 lg:my-6 flex items-center font-medium  dark:font-semibold text-xs md:text-base text-zinc-500 dark:text-zinc-500">
             <div className="ml-0.5 md:ml-1 w-fit min-w-[28px] p-1 py-0.5 md:p-1 border md:border-2 rounded-sm  bg-background flex justify-center">
@@ -74,7 +72,7 @@ export default function MovieDetails(props: any) {
           </div>
           <Genres genres={movie.genre} />
           <p className="mt-4 md:mt-8 font-medium dark:font-normal text-xs md:text-base tracking-wider max-w-3xl">
-            {desc}
+            {movie.description.join(" ")}
           </p>
           <Directors directors={movie.director} />
         </div>

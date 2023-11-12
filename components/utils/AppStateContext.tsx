@@ -25,7 +25,7 @@ interface AppStateProviderProps {
 }
 
 const AppStateProvider = ({ children }: AppStateProviderProps) => {
-  const [movieList, setMovieList] = useState<Movie[]>(movies);
+  const [movieList, setMovieList] = useState<Movie[]>(movies.slice(0, 40));
   const [activeList, setActiveList] = useState<Movie[]>(movies.slice(0, 5));
   const [users, setUsers] = useState<User[]>([
     {
@@ -61,6 +61,7 @@ const AppStateProvider = ({ children }: AppStateProviderProps) => {
   };
 
   useEffect(() => {
+    //localStorage.clear();
     const storedState = localStorage.getItem("appState");
     if (storedState) {
       const parsedState = JSON.parse(storedState);

@@ -1,14 +1,17 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import CarouselItem from "./CarouselItem";
 
 import Carousel from "react-multi-carousel";
 import { getMovieByGenre } from "@/lib/movieUtils";
 import { Movie } from "@/types/movieType";
+import { AppStateContext } from "@/components/utils/AppStateContext";
 
 export const MultiCarousel = (props: any) => {
+  const state = useContext(AppStateContext);
+  const movies = state!.movieList;
   const genre = props.genre;
-  const list = getMovieByGenre(genre).slice(0, 10);
+  const list = getMovieByGenre(genre, movies).slice(0, 10);
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },

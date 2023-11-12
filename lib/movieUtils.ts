@@ -1,5 +1,4 @@
 import { Movie } from "@/types/movieType";
-import { movies } from "./movies";
 
 export function calcRunTime(minutes: number): string {
   if (minutes < 0) {
@@ -19,11 +18,11 @@ export function calcRunTime(minutes: number): string {
 }
 
 export function getMovieById(id: number, list: Movie[]): Movie | undefined {
-  return movies.find((movie) => movie.id === id.toString());
+  return list.find((movie) => movie.id === id.toString());
 }
 
-export function getMovieByGenre(genre: string): Movie[] {
-  const array = movies.filter((movie) => movie.genre.includes(genre));
+export function getMovieByGenre(genre: string, list: Movie[]): Movie[] {
+  const array = list.filter((movie) => movie.genre.includes(genre));
   return array
     .map((a) => ({ sort: Math.random(), value: a }))
     .sort((a, b) => a.sort - b.sort)
