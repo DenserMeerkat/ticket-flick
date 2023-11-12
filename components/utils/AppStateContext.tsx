@@ -1,6 +1,6 @@
 import { Movie } from "@/types/movieType";
 import { User } from "@/types/userType";
-import { createContext, useState, ReactNode } from "react";
+import { createContext, useState, useEffect, ReactNode } from "react";
 import { movies } from "@/lib/movies";
 
 interface AppState {
@@ -59,6 +59,31 @@ const AppStateProvider = ({ children }: AppStateProviderProps) => {
     isAdmin,
     setIsAdmin,
   };
+
+  useEffect(() => {
+    const storedState = localStorage.getItem("appState");
+    if (storedState) {
+      const parsedState = JSON.parse(storedState);
+      setMovieList(parsedState.movieList);
+      setActiveList(parsedState.activeList);
+      setUsers(parsedState.users);
+      setAdmins(parsedState.admins);
+      setActiveUser(parsedState.activeUser);
+      setIsAdmin(parsedState.isAdmin);
+    }
+  }, []);
+
+  useEffect(() => {
+    const stateToStore = JSON.stringify({
+      movieList,
+      activeList,
+      users,
+      admins,
+      activeUser,
+      isAdmin,
+    });
+    localStorage.setItem("appState", stateToStore);
+  }, [movieList, activeList, users, admins, activeUser, isAdmin]);
 
   return (
     <AppStateContext.Provider value={state}>
