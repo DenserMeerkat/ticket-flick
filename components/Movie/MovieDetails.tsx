@@ -1,6 +1,6 @@
 "use client";
 import { calcRunTime, getMovieById } from "@/lib/movieUtils";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import NotFoundPage from "@/app/movie/404";
 import { AppStateContext } from "@/components/utils/AppStateContext";
 import { useSearchParams } from "next/navigation";
@@ -12,11 +12,15 @@ import { Toggle } from "@/components/ui/toggle";
 import { Volume, VolumeX } from "lucide-react";
 
 export default function MovieDetails(props: any) {
+  const [loaded, setLoaded] = useState(false);
   const state = useContext(AppStateContext);
   const movies = state!.movieList;
   const [isMuted, setIsMuted] = useState(true);
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
   if (id === undefined || id == null) return <NotFoundPage />;
   const movie = getMovieById(parseInt(id), movies);
   if (movie === undefined) return <NotFoundPage />;
@@ -31,9 +35,11 @@ export default function MovieDetails(props: any) {
   function onPressedChangeMute(value: boolean) {
     setIsMuted(value);
   }
-
+  if (!loaded) {
+    return <div className="h-[40vh]"></div>;
+  }
   return (
-    <div className="h-max min-h-[calc(100vh-8rem)] w-full  relative">
+    <div className="h-max min-h-[calc(75vh)] w-full  relative">
       <div className="absolute right-0 w-[75%] md:w-[70%] aspect-[16/9] z-[-2] bg-gradient-to-r from-white via-transparent dark:from-zinc-950 to-transparent"></div>
       <div className="absolute right-0 w-[75%] md:w-[70%] aspect-[16/9] z-[-2] bg-gradient-to-t from-white via-transparent dark:from-zinc-950 to-transparent"></div>
       <div className="absolute right-0 p-1 md:p-3 lg:p-4 xl:p-6 ">

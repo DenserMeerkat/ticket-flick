@@ -1,8 +1,7 @@
 import React from "react";
-import ThemeSwitcher from "./elements/ThemeSwitcher";
-import GitHubLink from "./elements/Github";
 import Search from "./elements/Search";
 import Actions from "./elements/Actions";
+import Reset from "./elements/Reset";
 
 const Tray = (props: any) => {
   const showSearch = props.showSearch;
@@ -13,6 +12,7 @@ const Tray = (props: any) => {
         "flex gap-0.5 min-[400px]:gap-1 sm:gap-1.5 lg:gap-2 items-center"
       }
     >
+      <Reset />
       {showSearch && <Search />}
       <Actions actions={actions} />
     </div>
