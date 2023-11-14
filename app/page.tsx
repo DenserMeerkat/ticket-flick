@@ -10,8 +10,8 @@ export default function Home() {
         <HeroCarousel />
         <Section title={"Action"} genre={"Action"} />
         <Section title={"Adventure"} genre={"Adventure"} />
-        <Section title={"Comedy"} genre={"Comedy"} />
-        <Section title={"Drama"} genre={"Drama"} />
+        {/* <Section title={"Comedy"} genre={"Comedy"} />
+        <Section title={"Drama"} genre={"Drama"} /> */}
         <Section title={"Mystery"} genre={"Mystery"} />
         <Section title={"Sci-Fi"} genre={"Sci-Fi"} />
         <Section title={"Thriller"} genre={"Thriller"} />

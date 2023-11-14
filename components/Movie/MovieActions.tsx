@@ -11,7 +11,6 @@ import { DeleteDialog } from "./Actions/DeleteDialog";
 const MovieActions = () => {
   const state = useContext(AppStateContext);
   const [loaded, setLoaded] = useState(false);
-  const movies = state!.movieList;
 
   useEffect(() => {
     setLoaded(true);
