@@ -91,7 +91,6 @@ export function SelectSeats(props: any) {
           disabled={selectedSeats.length === 0}
           onClick={() => {
             console.log("Selected Seats:", selectedSeats);
-            props.onOpenChange(false);
           }}
         >
           Confirm Selection
