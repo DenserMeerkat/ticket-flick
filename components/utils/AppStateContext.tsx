@@ -61,6 +61,7 @@ const AppStateProvider = ({ children }: AppStateProviderProps) => {
   };
 
   useEffect(() => {
+    //localStorage.clear();
     const storedState = localStorage.getItem("appState");
     if (storedState) {
       const parsedState = JSON.parse(storedState);
