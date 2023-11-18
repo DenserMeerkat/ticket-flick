@@ -29,13 +29,15 @@ export function getMovieByGenre(genre: string, list: Movie[]): Movie[] {
     .map((a) => a.value);
 }
 
-export function getNext10Dates(): {
+export interface ShowDate {
   day: string;
   date: string;
   month: string;
-}[] {
+}
+
+export function getNext10Dates(): ShowDate[] {
   const currentDate = new Date();
-  const next10Dates: { day: string; date: string; month: string }[] = [];
+  const next10Dates: ShowDate[] = [];
 
   for (let i = 0; i < 10; i++) {
     const nextDate = new Date();
@@ -50,12 +52,31 @@ export function getNext10Dates(): {
     const monthAbbreviation = new Intl.DateTimeFormat("en-US", {
       month: "short",
     }).format(nextDate);
-    next10Dates.push({
+    const showDate: ShowDate = {
       day: dayOfWeek,
       date: dayOfMonth,
       month: monthAbbreviation,
-    });
+    };
+    next10Dates.push(showDate);
+  }
+  return next10Dates;
+}
+
+type SeatMap = Record<string, string[]>;
+
+export function generateRandomSeats(): SeatMap {
+  const seats: SeatMap = {};
+
+  for (let rowChar = 65; rowChar <= 74; rowChar++) {
+    const row = String.fromCharCode(rowChar); // A, B, C, ..., M
+    const rowSeats: string[] = [];
+
+    for (let seatNumber = 1; seatNumber <= 20; seatNumber++) {
+      rowSeats.push(`${row}${seatNumber}`);
+    }
+
+    seats[row] = rowSeats;
   }
 
-  return next10Dates;
+  return seats;
 }

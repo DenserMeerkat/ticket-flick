@@ -7,7 +7,7 @@ import EditDialog from "./Actions/EditDialog";
 import { useSearchParams } from "next/navigation";
 import { getMovieById } from "@/lib/movieUtils";
 import { DeleteDialog } from "./Actions/DeleteDialog";
-import BookTicket from "../Book/BookTicket";
+import BookTicketsDialog from "../Book/BookTicketsDialog";
 
 const MovieActions = () => {
   const state = useContext(AppStateContext);
@@ -33,7 +33,7 @@ const MovieActions = () => {
             </Link>
           </div>
         ) : !state!.isAdmin ? (
-          <BookTicket />
+          <BookTicketsDialog />
         ) : (
           <AdminActions />
         )}
