@@ -42,7 +42,7 @@ export function SelectSeats(props: any) {
       </DialogHeader>
       <div className="mt-2 grid grid-cols-20 gap-1 overflow-y-auto">
         {Object.entries(seats).map(([row, rowSeats]) => (
-          <div className="flex items-center justify-center">
+          <div key={row} className="flex items-center justify-center">
             <p className="w-6">{row}</p>
             <div key={row} className="flex items-center">
               {rowSeats.map((seat) => (
@@ -64,7 +64,10 @@ export function SelectSeats(props: any) {
         {selectedSeats.length > 0 && (
           <div className="flex flex-wrap max-w-[200px] min-[450px]:max-w-none">
             {selectedSeats.map((seat) => (
-              <div className="text-xs font-medium px-0.5 mx-0.5  border rounded-sm">
+              <div
+                key={seat}
+                className="text-xs font-medium px-0.5 mx-0.5  border rounded-sm"
+              >
                 {seat}
               </div>
             ))}
