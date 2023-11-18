@@ -34,7 +34,7 @@ export function SelectSeats(props: any) {
         <DialogTitle>Select Seats</DialogTitle>
         <DialogDescription>
           Select the seats you wish to book for
-          <span className="ml-1 text-[1rem] font-bold">
+          <span className="ml-1.5 font-bold text-[0.9rem] underline underline-offset-4">
             {selectedDate.day}, {selectedDate.date} {selectedDate.month}
           </span>
           .
@@ -60,26 +60,25 @@ export function SelectSeats(props: any) {
           </div>
         ))}
       </div>
-      <div className="flex flex-col-reverse md:flex-row md:justify-between items-center mt-2">
-        {selectedSeats.length > 0 && (
+      {selectedSeats.length > 0 && (
+        <div className="flex flex-col-reverse md:flex-row md:justify-between items-center mt-2">
           <div className="flex flex-wrap max-w-[200px] min-[450px]:max-w-none">
             {selectedSeats.map((seat) => (
               <div
                 key={seat}
-                className="text-xs font-medium px-0.5 mx-0.5  border rounded-sm"
+                className="text-xs font-medium px-1 py-0.5 mx-0.5 border rounded-sm"
               >
                 {seat}
               </div>
             ))}
           </div>
-        )}
-        {selectedSeats.length > 0 && (
+          <div className="h-2"></div>
           <p className="text-sm font-semibold">
             {selectedSeats.length}{" "}
             {selectedSeats.length === 1 ? "ticket" : "tickets"}
           </p>
-        )}
-      </div>
+        </div>
+      )}
       <DialogFooter className="mt-2">
         <Button
           variant="secondary"
@@ -96,7 +95,9 @@ export function SelectSeats(props: any) {
             console.log("Selected Seats:", selectedSeats);
           }}
         >
-          Confirm Selection
+          {selectedSeats.length === 0
+            ? "No seats selected"
+            : "Confirm Selection"}
         </Button>
       </DialogFooter>
     </DialogContent>
