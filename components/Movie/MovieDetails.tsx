@@ -9,7 +9,7 @@ import Directors from "@/components/Movie/elements/Directors";
 import Poster from "@/components/Movie/elements/Poster";
 import Banner from "@/components/Movie/elements/Banner";
 import { Toggle } from "@/components/ui/toggle";
-import { Volume, VolumeX } from "lucide-react";
+import { Volume2, VolumeX } from "lucide-react";
 
 export default function MovieDetails(props: any) {
   const [loaded, setLoaded] = useState(false);
@@ -54,7 +54,7 @@ export default function MovieDetails(props: any) {
             {isMuted ? (
               <VolumeX className=" h-4 w-4" />
             ) : (
-              <Volume className=" h-4 w-4" />
+              <Volume2 className=" h-4 w-4" />
             )}
           </Toggle>
         ) : (

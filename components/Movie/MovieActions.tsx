@@ -7,6 +7,7 @@ import EditDialog from "./Actions/EditDialog";
 import { useSearchParams } from "next/navigation";
 import { getMovieById } from "@/lib/movieUtils";
 import { DeleteDialog } from "./Actions/DeleteDialog";
+import BookTicket from "../Book/BookTicket";
 
 const MovieActions = () => {
   const state = useContext(AppStateContext);
@@ -20,17 +21,19 @@ const MovieActions = () => {
     return <div className="h-[40vh]"></div>;
   }
   return (
-    <div className="mx-auto max-w-7xl w-full mb-12 px-2 md:px-4 lg:px-6">
+    <div className="mx-auto max-w-7xl w-full mb-12 px-2 md:px-4 lg:px-5">
       <>
         {!state!.activeUser ? (
-          <Link
-            href="/login"
-            className={buttonVariants({ variant: "default", size: "lg" })}
-          >
-            Login to Book Tickets
-          </Link>
+          <div className="px-8 sm:px-0 sm:w-60">
+            <Link
+              href="/login"
+              className={`${buttonVariants({ variant: "default" })} w-full`}
+            >
+              Login to Book Tickets
+            </Link>
+          </div>
         ) : !state!.isAdmin ? (
-          <Button size={"lg"}>Book Tickets</Button>
+          <BookTicket />
         ) : (
           <AdminActions />
         )}
