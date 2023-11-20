@@ -21,7 +21,7 @@ const Genre = () => {
       <h1 className="my-6 text-2xl text-center font-bold tracking-wider">
         {genre} Movies
       </h1>{" "}
-      <div className="flex flex-wrap my-4">
+      <div className="flex flex-wrap my-4 justify-center">
         {genreMovies.map((movie: Movie, index: number) => {
           const poster = `/images/poster/${movie.id}_poster.jpg`;
           return (
