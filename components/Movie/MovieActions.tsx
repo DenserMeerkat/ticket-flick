@@ -22,10 +22,6 @@ const MovieActions = () => {
   if (id === undefined || id == null) return <NotFoundPage />;
   const movie = getMovieById(parseInt(id), movies);
   if (movie === undefined) return <NotFoundPage />;
-  useEffect(() => {
-    setLoaded(true);
-  }, []);
-
   if (!loaded) {
     return <div className="h-[40vh]"></div>;
   }
