@@ -21,9 +21,9 @@ export default function MovieDetails(props: any) {
   useEffect(() => {
     setLoaded(true);
   }, []);
-  if (id === undefined || id == null) return <NotFoundPage />;
+  if (id === undefined || id == null) return <></>;
   const movie = getMovieById(parseInt(id), movies);
-  if (movie === undefined) return <NotFoundPage />;
+  if (movie === undefined) return <></>;
   const title = movie.name;
   const desc = movie.description.join(" ");
   const runTime = calcRunTime(parseInt(movie.runTime));

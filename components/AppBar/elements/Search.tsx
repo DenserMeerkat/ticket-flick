@@ -28,6 +28,7 @@ const Search = () => {
 
   useEffect(() => {
     setDomLoaded(true);
+    if (inputValue.length == 0) setResults(movies);
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
@@ -36,7 +37,7 @@ const Search = () => {
     };
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
-  }, []);
+  }, [openSearch]);
 
   const onValueChange = (value: string) => {
     const inputValue = value;

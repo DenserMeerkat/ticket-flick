@@ -8,11 +8,20 @@ import { useSearchParams } from "next/navigation";
 import { getMovieById } from "@/lib/movieUtils";
 import { DeleteDialog } from "./Actions/DeleteDialog";
 import BookTicketsDialog from "../Book/BookTicketsDialog";
+import NotFoundPage from "@/app/movie/404";
 
 const MovieActions = () => {
   const state = useContext(AppStateContext);
   const [loaded, setLoaded] = useState(false);
-
+  const movies = state!.movieList;
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
+  if (id === undefined || id == null) return <NotFoundPage />;
+  const movie = getMovieById(parseInt(id), movies);
+  if (movie === undefined) return <NotFoundPage />;
   useEffect(() => {
     setLoaded(true);
   }, []);
