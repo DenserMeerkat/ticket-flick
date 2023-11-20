@@ -1,7 +1,7 @@
 import AppBar from "@/components/AppBar/AppBar";
 import LoginTabs from "@/components/Login/LoginTabs";
 
-export default function Home() {
+export default function LoginPage() {
   return (
     <main>
       <AppBar showSearch={false} actions="home" />

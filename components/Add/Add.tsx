@@ -7,11 +7,15 @@ import { Card } from "../ui/card";
 import { AspectRatio } from "../ui/aspect-ratio";
 import Image from "next/legacy/image";
 import { Button } from "../ui/button";
+import { Check, X } from "lucide-react";
+import { useMediaQuery } from "react-responsive";
 
 const Add = () => {
   const state = useContext(AppStateContext);
   const presentMovies: Movie[] = state!.movieList;
   const allMovies: Movie[] = movies;
+  const isMobile = useMediaQuery({ query: "(max-width: 400px)" });
+  const isTablet = useMediaQuery({ query: "(max-width: 550px)" });
 
   function isPresent(movie: Movie) {
     var flag: boolean = false;
@@ -42,62 +46,56 @@ const Add = () => {
   return (
     <div className="flex flex-wrap my-4">
       {allMovies.map((movie: Movie, index: number) => {
-        const poster = `/images/poster/${movie.id}_poster.jpg`;
+        const poster = `/images/banner/${movie.id}_banner.jpg`;
         return (
           <Card
             key={movie.id}
-            className="backdrop-blur-3xl transition  bg-zinc-100/[0.2] dark:bg-zinc-900/[0.2] hover:bg-zinc-100 hover:dark:bg-zinc-900 flex w-[400px] items-center gap-4 text-sm  m-1"
+            className=" transition  bg-zinc-100/[0.2] dark:bg-zinc-900/[0.2] hover:bg-zinc-100 hover:dark:bg-zinc-900 flex 
+            justify-between w-full items-center gap-4 text-sm  m-1"
           >
-            <div className="w-[120px] aspect-[2/3]">
-              <AspectRatio
-                className="rounded-sm overflow-hidden border shadow-lg"
-                ratio={2 / 3}
-              >
-                <Image
-                  key={`${movie.id}+poster`}
-                  src={poster}
-                  blurDataURL={poster.replace("images", "min_images")}
-                  placeholder="blur"
-                  alt="Movie Poster"
-                  layout="fill"
-                ></Image>
-              </AspectRatio>
-            </div>
-            <div className="max-w-[200px]">
-              <p className="font-bold text-lg mb-2 leading-tight">
-                {movie.name}
-              </p>
-              <p className="text-xs font-medium dark:text-zinc-400">
-                {movie.year}
-              </p>
-              <p
-                className="
-              text-xs"
-              >
-                {movie.director[0]}
-              </p>
-              <div className="flex gap-1 items-center">
-                {movie.genre.sort().map((genre: string, index) => (
-                  <React.Fragment key={index}>
-                    <p className="text-xs font-medium dark:text-zinc-400">
-                      {genre}
-                    </p>
-                    {index != movie.genre.length - 1 &&
-                      movie.genre.length != 1 && <p className="text-xs">·</p>}
-                  </React.Fragment>
-                ))}
-              </div>
-              <div className=" mt-4">
-                <Button
-                  className="h-8 w-36"
-                  size={"sm"}
-                  variant={isPresent(movie) ? "destructive" : "default"}
-                  onClick={() => toggleMovie(movie, index)}
+            <div className="flex items-center gap-4">
+              <div className="w-[100px] aspect-[16/9]">
+                <AspectRatio
+                  className=" rounded-s-lg overflow-hidden border shadow-lg"
+                  ratio={16 / 9}
                 >
-                  {isPresent(movie) ? "Disable" : "Enable"}
-                </Button>
+                  <Image
+                    key={`${movie.id}+poster`}
+                    src={poster}
+                    blurDataURL={poster.replace("images", "min_images")}
+                    placeholder="blur"
+                    alt="Movie Poster"
+                    layout="fill"
+                  ></Image>
+                </AspectRatio>
+              </div>
+              <div className="flex items-center gap-4 w-fit">
+                <p className="font-medium leading-tight">
+                  {isMobile
+                    ? movie.name.slice(0, 15) +
+                      (movie.name.length > 15 ? "..." : "")
+                    : isTablet
+                    ? movie.name.slice(0, 25) +
+                      (movie.name.length > 25 ? "..." : "")
+                    : movie.name}
+                </p>
+                <p className="hidden md:block text-xs font-medium dark:text-zinc-400">
+                  ({movie.year})
+                </p>
               </div>
             </div>
+            <Button
+              className="h-8 w-8 mr-4"
+              size={"icon"}
+              variant={isPresent(movie) ? "destructive" : "default"}
+              onClick={() => toggleMovie(movie, index)}
+            >
+              {isPresent(movie) ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Check className="h-5 w-5" />
+              )}
+            </Button>
           </Card>
         );
       })}
