@@ -157,7 +157,7 @@ export function SelectSeats(props: any) {
                     <div
                       key={seat}
                       className={
-                        "h-8 w-5 mr-1 relative border rounded-md bg-zinc-600 dark:bg-zinc-200"
+                        "h-8 w-5 mr-1 relative border rounded-md bg-gray-400/[0.4] dark:bg-gray-600/[0.4]"
                       }
                     ></div>
                   );

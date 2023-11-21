@@ -8,6 +8,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { AppStateContext } from "@/components/utils/AppStateContext";
 import { Button } from "@/components/ui/button";
 import { Ticket } from "lucide-react";
@@ -30,60 +31,61 @@ const TicketSheet = () => {
       <SheetContent>
         <SheetHeader>
           <SheetTitle>Your Tickets</SheetTitle>
-          <SheetDescription>{tickets?.length} tickets found</SheetDescription>
-          {tickets.map((ticket, index) => {
-            const movie: Movie = getMovieById(
-              parseInt(ticket.movieId),
-              state!.movieList
-            )!;
-            const poster = `/images/poster/${movie!.id}_poster.jpg`;
-            return (
-              <div
-                key={ticket.id}
-                className={
-                  "flex p-2 gap-4 rounded-sm cursor-pointer mb-2 bg-zinc-50 hover:bg-zinc-200 dark:bg-zinc-900 hover:dark:bg-zinc-800 transition-colors"
-                }
-              >
-                <div className="w-[60px] aspect-[2/3]">
-                  <AspectRatio
-                    className="rounded-sm overflow-hidden border shadow-lg"
-                    ratio={2 / 3}
-                  >
-                    <Image
-                      key={`${movie!.id}+poster`}
-                      src={poster}
-                      blurDataURL={poster.replace("images", "min_images")}
-                      placeholder="blur"
-                      alt="Movie Poster"
-                      layout="fill"
-                    ></Image>
-                  </AspectRatio>
-                </div>
-                <div>
-                  <p className="font-semibold mb-1">{movie.name}</p>
-                  <p className="text-xs font-medium dark:text-zinc-400">
-                    {ticket.showDate.day +
-                      ", " +
-                      ticket.showDate.month +
-                      ticket.showDate.date}
-                  </p>
-                  <div className="flex flex-wrap max-w-[200px] gap-1 items-center mt-1">
-                    {ticket.seats.map((seat: string, index) => (
-                      <React.Fragment key={index}>
-                        <p className="text-xs font-medium dark:text-zinc-400">
-                          {seat}
-                        </p>
-                        {index != ticket.seats.length - 1 &&
-                          ticket.seats.length != 1 && (
-                            <p className="text-xs">·</p>
-                          )}
-                      </React.Fragment>
-                    ))}
+          <SheetDescription className="pb-2">
+            {tickets?.length} tickets found
+          </SheetDescription>
+          <ScrollArea className="h-[calc(100vh-7rem)] w-full rounded-md">
+            {tickets.map((ticket, index) => {
+              const movie: Movie = getMovieById(
+                parseInt(ticket.movieId),
+                state!.movieList
+              )!;
+              const poster = `/images/poster/${movie!.id}_poster.jpg`;
+              return (
+                <div
+                  key={ticket.id}
+                  className={
+                    "flex p-2 gap-4 rounded-sm mb-2 bg-zinc-50 hover:bg-zinc-200 dark:bg-zinc-900"
+                  }
+                >
+                  <div className="w-[60px] aspect-[2/3]">
+                    <AspectRatio
+                      className="rounded-sm overflow-hidden border shadow-lg"
+                      ratio={2 / 3}
+                    >
+                      <Image
+                        key={`${movie!.id}+poster`}
+                        src={poster}
+                        blurDataURL={poster.replace("images", "min_images")}
+                        placeholder="blur"
+                        alt="Movie Poster"
+                        layout="fill"
+                      ></Image>
+                    </AspectRatio>
+                  </div>
+                  <div>
+                    <p className="text-left font-semibold mb-1">{movie.name}</p>
+                    <p className="text-left text-xs font-medium dark:text-zinc-400">
+                      {ticket.showDate.day +
+                        ", " +
+                        ticket.showDate.month +
+                        " " +
+                        ticket.showDate.date}
+                    </p>
+                    <div className="flex flex-wrap max-w-[200px] gap-1 items-center mt-1">
+                      {ticket.seats.map((seat: string, index) => (
+                        <React.Fragment key={index}>
+                          <p className="border-2 rounded-sm text-[0.65rem] px-0.5 font-medium dark:text-zinc-400">
+                            {seat}
+                          </p>
+                        </React.Fragment>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </ScrollArea>
         </SheetHeader>
       </SheetContent>
     </Sheet>

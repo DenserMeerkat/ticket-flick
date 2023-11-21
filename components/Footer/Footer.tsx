@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <footer
       className="sm:pb-4 border-t 
-    bg-slate-50/[0.5]  dark:bg-zinc-950/[0.7] backdrop-filter backdrop-blur-lg"
+    bg-zinc-50/[0.5]  dark:bg-zinc-950/[0.7] backdrop-filter backdrop-blur-lg"
     >
       <div className=" max-w-7xl mx-auto py-2 px-1 sm:px-2 md:px-6">
         <div className="w-full flex items-center justify-between">

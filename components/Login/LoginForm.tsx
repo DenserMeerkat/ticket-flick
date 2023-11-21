@@ -66,7 +66,7 @@ const LoginForm = (props: any) => {
       toast({
         title: "Login Failed",
         description: (
-          <p className="mt-2 text-lg font-medium w-[340px] rounded-md bg-slate-950 p-1 pl-0">
+          <p className="mt-2 text-lg font-medium w-[340px] rounded-md p-1 pl-0">
             {`Incorrect Credentials`}
           </p>
         ),

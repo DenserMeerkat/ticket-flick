@@ -1,16 +1,7 @@
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  DialogFooter,
-} from "@/components/ui/dialog";
-import { Card, CardContent } from "@/components/ui/card";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { getNext10Dates } from "@/lib/movieUtils";
-import { ArrowRight, Ticket } from "lucide-react";
+import { Ticket } from "lucide-react";
 import { useEffect, useState } from "react";
 import SelectDate from "./SelectDate";
 import SelectSeats from "./SelectSeats";
