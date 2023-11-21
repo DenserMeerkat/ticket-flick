@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Search from "./elements/Search";
 import Actions from "./elements/Actions";
 import Reset from "./elements/Reset";
+import TicketSheet from "./elements/TicketSheet";
 
 const Tray = (props: any) => {
   const showSearch = props.showSearch;
@@ -14,6 +15,9 @@ const Tray = (props: any) => {
     >
       <Reset />
       {showSearch && <Search />}
+      <Suspense>
+        <TicketSheet />
+      </Suspense>
       <Actions actions={actions} />
     </div>
   );

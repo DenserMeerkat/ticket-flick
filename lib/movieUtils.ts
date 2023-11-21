@@ -1,4 +1,5 @@
 import { Movie } from "@/types/movieType";
+import { ShowDate } from "@/types/showDate";
 
 export function calcRunTime(minutes: number): string {
   if (minutes < 0) {
@@ -27,12 +28,6 @@ export function getMovieByGenre(genre: string, list: Movie[]): Movie[] {
     .map((a) => ({ sort: Math.random(), value: a }))
     .sort((a, b) => a.sort - b.sort)
     .map((a) => a.value);
-}
-
-export interface ShowDate {
-  day: string;
-  date: string;
-  month: string;
 }
 
 export function getNext10Dates(): ShowDate[] {
@@ -79,4 +74,15 @@ export function generateRandomSeats(): SeatMap {
   }
 
   return seats;
+}
+
+export function equalizeShowDates(
+  showDate1: ShowDate,
+  showDate2: ShowDate
+): boolean {
+  return (
+    showDate1.date === showDate2.date &&
+    showDate1.month === showDate2.month &&
+    showDate1.day === showDate2.day
+  );
 }

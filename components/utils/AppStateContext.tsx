@@ -33,6 +33,7 @@ const AppStateProvider = ({ children }: AppStateProviderProps) => {
       name: "John Doe",
       email: "johndoe@gmail.com",
       password: "$2a$10$QUnEZ7GMdMFL5nOfXxJDtOeS34aIhHrPyXQJuQXL9lLU6lb5k8mOC",
+      tickets: [],
     },
   ]);
   const [admins, setAdmins] = useState<User[]>([
@@ -41,6 +42,7 @@ const AppStateProvider = ({ children }: AppStateProviderProps) => {
       name: "Admin",
       email: "admin@gmail.com",
       password: "$2a$10$QUnEZ7GMdMFL5nOfXxJDtOeS34aIhHrPyXQJuQXL9lLU6lb5k8mOC",
+      tickets: [],
     },
   ]);
   const [activeUser, setActiveUser] = useState<User | undefined>(undefined);
@@ -61,7 +63,6 @@ const AppStateProvider = ({ children }: AppStateProviderProps) => {
   };
 
   useEffect(() => {
-    //localStorage.clear();
     const storedState = localStorage.getItem("appState");
     if (storedState) {
       const parsedState = JSON.parse(storedState);

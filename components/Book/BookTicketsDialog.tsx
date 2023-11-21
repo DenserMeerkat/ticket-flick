@@ -44,7 +44,11 @@ export function BookTicketsDialog(props: any) {
         </div>
       </DialogTrigger>
       {showSeats ? (
-        <SelectSeats setShowSeats={setShowSeats} selectedDate={selectedDate} />
+        <SelectSeats
+          setShowSeats={setShowSeats}
+          selectedDate={selectedDate}
+          onOpenChange={setDialogOpen}
+        />
       ) : (
         <SelectDate
           showDates={showDates}

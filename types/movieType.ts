@@ -1,3 +1,5 @@
+import { Ticket } from "./ticket";
+
 export interface Movie {
   id: string;
   name: string;
@@ -13,4 +15,5 @@ export interface Movie {
   director: string[];
   stars: string[];
   description: string[];
+  bookedTickets?: Ticket[];
 }
