@@ -19,7 +19,7 @@ export function SelectDate({
   setShowSeats,
 }: any) {
   return (
-    <DialogContent className="mt-[8vh] max-w-[90vh] overflow-y-auto">
+    <DialogContent className="max-w-[90vh] overflow-y-auto">
       <DialogHeader>
         <DialogTitle>Book Tickets</DialogTitle>
         <DialogDescription>

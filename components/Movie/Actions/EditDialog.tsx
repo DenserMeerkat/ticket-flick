@@ -84,7 +84,7 @@ export function EditDialog(props: any) {
           Edit Movie
         </Button>
       </DialogTrigger>
-      <DialogContent className="md:mt-[8vh] max-w-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Edit Movie</DialogTitle>
           <DialogDescription>

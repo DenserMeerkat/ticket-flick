@@ -19,7 +19,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const TicketSheet = () => {
   const state = useContext(AppStateContext);
-  if (!state!.activeUser && !state?.isAdmin) return <></>;
+  if (!state!.activeUser || state!.isAdmin) return <></>;
   const tickets = state?.activeUser?.tickets ?? [];
   return (
     <Sheet>
@@ -28,7 +28,7 @@ const TicketSheet = () => {
           <Ticket className="h-4 w-4" />
         </Button>
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent className="">
         <SheetHeader>
           <SheetTitle>Your Tickets</SheetTitle>
           <SheetDescription className="pb-2">

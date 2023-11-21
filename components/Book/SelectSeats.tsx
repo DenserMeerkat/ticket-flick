@@ -135,7 +135,7 @@ export function SelectSeats(props: any) {
   };
 
   return (
-    <DialogContent className="mt-[8vh] min-w-fit overflow-x-auto">
+    <DialogContent className="min-w-fit overflow-x-auto">
       <DialogHeader>
         <DialogTitle>Select Seats</DialogTitle>
         <DialogDescription>
