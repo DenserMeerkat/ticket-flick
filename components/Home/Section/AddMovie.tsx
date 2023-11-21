@@ -13,7 +13,7 @@ const AddMovie = () => {
     return (
       <div className="flex justify-center my-2 lg:my-6">
         <Link
-          href={"add"}
+          href={"/add"}
           className={`${buttonVariants({
             variant: "default",
           })} rounded-xl lg:py-6 lg:px-8`}

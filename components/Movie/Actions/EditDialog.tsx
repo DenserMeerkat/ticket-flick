@@ -24,7 +24,6 @@ import { Edit } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { useContext, useState } from "react";
 import { AppStateContext } from "@/components/utils/AppStateContext";
-import { toast } from "@/components/ui/use-toast";
 
 const FormSchema = z.object({
   name: z.string(),
@@ -89,7 +88,7 @@ export function EditDialog(props: any) {
         <DialogHeader>
           <DialogTitle>Edit Movie</DialogTitle>
           <DialogDescription>
-            Make changes to the Movie here. Click save when you're done.
+            Make changes to the Movie here. Click save when you&apos;re done.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>

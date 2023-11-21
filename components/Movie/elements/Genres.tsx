@@ -10,7 +10,7 @@ const Genres = (props: any) => {
         return (
           <Link
             key={index}
-            href={`/genre/${genre.toLocaleLowerCase()}`}
+            href={`/genre?g=${genre}`}
             className={`${buttonVariants({
               variant: "outline",
               size: "xs",

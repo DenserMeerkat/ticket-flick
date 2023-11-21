@@ -9,9 +9,8 @@ import { AppStateContext } from "@/components/utils/AppStateContext";
 
 export const MultiCarousel = (props: any) => {
   const state = useContext(AppStateContext);
-  const movies = state!.movieList;
   const genre = props.genre;
-  const list = getMovieByGenre(genre, movies).slice(0, 10);
+  const list = getMovieByGenre(genre, state!.movieList).slice(0, 10);
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
