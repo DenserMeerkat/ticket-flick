@@ -59,6 +59,7 @@ const LoginForm = () => {
         name: data.name,
         email: data.email,
         password: hashedPassword,
+        tickets: [],
       };
       state!.setUsers((prevUsers: User[]) => {
         return [...prevUsers, user];

@@ -37,7 +37,7 @@ const Search = () => {
     };
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
-  }, [openSearch]);
+  }, [openSearch, inputValue]);
 
   const onValueChange = (value: string) => {
     const inputValue = value;
